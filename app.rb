@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'lib/robot'
+require_relative 'lib/app_logger'
 
 robot = Robot.new
+logger = AppLogger.new
 
 puts 'Welcome to the Robot Simulator'
 puts 'Enter commands (PLACE X,Y,DIRECTION | MOVE | LEFT | RIGHT | REPORT)'
@@ -16,6 +18,7 @@ while (line = $stdin.gets)
     y = Regexp.last_match(2).to_i
     dir = Regexp.last_match(3)
     robot.place(x, y, dir)
+    logger.info("Placed #{command}")
   elsif %w[MOVE LEFT RIGHT REPORT].include?(command)
     case command
     when 'MOVE'   then robot.move
@@ -23,7 +26,9 @@ while (line = $stdin.gets)
     when 'RIGHT'  then robot.right
     when 'REPORT' then robot.report
     end
+    logger.info("Action #{command} completed")
   else
     puts "⚠️  Invalid command: #{command}"
+    logger.error("Invalid #{command} sent")
   end
 end

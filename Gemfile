@@ -2,9 +2,11 @@
 
 source 'https://rubygems.org'
 
+gem 'dotenv'
+
 group :development, :test do
-  gem 'rubocop', require: false
   gem 'debug'
+  gem 'rubocop', require: false
 end
 
 group :test do

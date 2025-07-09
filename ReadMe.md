@@ -1,6 +1,6 @@
-# My Ruby App
+# Robot App
 
-A simple Ruby application.
+Moving Robot - Ruby application.
 
 ## 🧰 Requirements
 
@@ -18,15 +18,38 @@ bundle install
 2. **Run application**
 
 ```bash
-ruby index.rb
+ruby app.rb
 ```
 
 3. **Project structure**
 
-.
+<pre>
 ├── Gemfile
 ├── Gemfile.lock
 ├── ReadMe.md
 ├── app.rb
-└── lib
-    └── robot.rb
+├── lib
+│   └── robot.rb
+└── spec
+    ├── app_spec.rb
+    ├── robot_spec.rb
+    └── spec_helper.rb
+</pre>
+
+4. **Notes**
+
+### View notes logged in tmp file
+
+```
+I, [2025-07-10T20:38:40.908383 #94043]  INFO -- : Placed PLACE 1,2,N
+I, [2025-07-10T20:38:40.913023 #94043]  INFO -- : Action MOVE completed
+I, [2025-07-10T20:38:40.917637 #94043]  INFO -- : Action LEFT completed
+I, [2025-07-10T20:38:40.922379 #94043]  INFO -- : Action RIGHT completed
+I, [2025-07-10T20:38:40.927216 #94043]  INFO -- : Action REPORT completed
+E, [2025-07-10T20:38:40.930571 #94043] ERROR -- : Invalid JUMP sent
+I, [2025-07-10T20:38:40.935210 #94043]  INFO -- : Placed PLACE 0,0,E
+I, [2025-07-10T20:38:40.935650 #94043]  INFO -- : Action MOVE completed
+I, [2025-07-10T20:38:40.936001 #94043]  INFO -- : Action LEFT completed
+I, [2025-07-10T20:38:40.936314 #94043]  INFO -- : Action REPORT completed
+E, [2025-07-10T20:38:40.936561 #94043] ERROR -- : Invalid DANCE sent
+```
