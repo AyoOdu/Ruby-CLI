@@ -4,7 +4,7 @@ A simple Ruby application.
 
 ## 🧰 Requirements
 
-- **Ruby 3.0 or later**
+- **Ruby 3.4.4 or later**
 - [Bundler](https://bundler.io/) for dependency management
 
 ## 🚀 Setup
