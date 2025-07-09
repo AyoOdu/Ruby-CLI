@@ -1,0 +1,15 @@
+AllCops:
+  TargetRubyVersion: 3.4.4
+  NewCops: enable
+  Exclude:
+    - 'ReadMe.md'
+
+Layout/LineLength:
+  Max: 100
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+ 
