@@ -15,28 +15,46 @@ Moving Robot - Ruby application.
 bundle install
 ```
 
-2. **Run application**
+2. **Set up environment**
+```bash
+# .env
+LOGGER_ON=true # Turns on app logger
+```
+
+3. **Test & Linting**
+
+```bash
+bundle exec rspec
+
+bundle exec rubocop
+```
+
+4. **Run application**
 
 ```bash
 ruby app.rb
 ```
 
-3. **Project structure**
+5. **Project structure**
 
 <pre>
+.
 ├── Gemfile
 ├── Gemfile.lock
 ├── ReadMe.md
 ├── app.rb
 ├── lib
-│   └── robot.rb
-└── spec
-    ├── app_spec.rb
-    ├── robot_spec.rb
-    └── spec_helper.rb
+│   ├── app_logger.rb
+│   └── robot.rb
+├── spec
+│   ├── app_spec.rb
+│   ├── robot_spec.rb
+│   └── spec_helper.rb
+└── tmp
+    └── app.log
 </pre>
 
-4. **Notes**
+6. **Notes**
 
 ### View notes logged in tmp file
 
