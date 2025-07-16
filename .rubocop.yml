@@ -3,6 +3,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'ReadMe.md'
+    - 'play_things.rb'
 
 Layout/LineLength:
   Max: 100

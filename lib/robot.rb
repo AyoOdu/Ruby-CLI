@@ -6,7 +6,7 @@ class Robot
   SOUTH = 'S'
   WEST = 'W'
   DIRECTIONS = [NORTH, EAST, SOUTH, WEST].freeze
-  GRID_SIZE = 6
+  GRID_SIZE = 10
 
   def initialize
     @placed = false
@@ -24,13 +24,22 @@ class Robot
   def move
     return unless @placed
 
+    local_x = @x_coordinate
+    local_y = @y_coordinate
+
     case @facing
-    when NORTH then @y_coordinate += 1 if @y_coordinate < GRID_SIZE - 1
-    when EAST then @x_coordinate += 1 if @x_coordinate < GRID_SIZE - 1
-    when SOUTH then @y_coordinate -= 1 if @y_coordinate.positive?
-    when WEST then @x_coordinate -= 1 if @x_coordinate.positive?
+    when NORTH then local_y += 1
+    when EAST then local_x += 1
+    when SOUTH then local_y -= 1
+    when WEST then local_x -= 1
     end
+
+    return unless valid_position?(local_x, local_y)
+    
+    @x_coordinate = local_x
+    @y_coordinate = local_y
   end
+  
 
   def left
     return unless @placed
@@ -52,7 +61,10 @@ class Robot
 
   private
 
-  def valid_position?(x_coordinate, y_coordinate)
-    x_coordinate.between?(0, GRID_SIZE - 1) && y_coordinate.between?(0, GRID_SIZE - 1)
+  def valid_position?(x, y)
+    in_bounds = x.between?(0, GRID_SIZE - 1) && y.between?(0, GRID_SIZE - 1)
+    out_of_gutter = !((x == 6 || x == 5) && (y == 6 || y == 5))
+
+    in_bounds && out_of_gutter
   end
 end

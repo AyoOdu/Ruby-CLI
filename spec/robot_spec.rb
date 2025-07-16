@@ -11,13 +11,23 @@ RSpec.describe Robot do # rubocop:disable Metrics/BlockLength
       expect { robot.report }.to output("1,2,N\n").to_stdout
     end
 
+    it 'places the robot correctly with another valid coordinates and direction' do
+      robot.place(9, 9, 'N')
+      expect { robot.report }.to output("9,9,N\n").to_stdout
+    end
+
     it 'ignores invalid direction' do
       robot.place(0, 0, 'INVALID')
       expect { robot.report }.not_to output.to_stdout
     end
 
     it 'ignores out-of-bounds positions' do
-      robot.place(6, 6, 'N')
+      robot.place(10, 10, 'N')
+      expect { robot.report }.not_to output.to_stdout
+    end
+
+    it 'ignores in-gutter positions' do
+      robot.place(5, 6, 'N')
       expect { robot.report }.not_to output.to_stdout
     end
   end
@@ -30,9 +40,9 @@ RSpec.describe Robot do # rubocop:disable Metrics/BlockLength
     end
 
     it 'does not move north beyond the grid' do
-      robot.place(0, 5, 'N')
+      robot.place(0, 9, 'N')
       robot.move
-      expect { robot.report }.to output("0,5,N\n").to_stdout
+      expect { robot.report }.to output("0,9,N\n").to_stdout
     end
 
     it 'moves east when possible' do

@@ -7,6 +7,7 @@ gem 'dotenv'
 group :development, :test do
   gem 'debug'
   gem 'rubocop', require: false
+  gem "factory_bot"
 end
 
 group :test do
